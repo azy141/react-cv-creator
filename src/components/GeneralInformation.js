@@ -15,12 +15,6 @@ class GeneralInformation extends React.Component {
             <label htmlFor="lastName">Last name</label>
             <input onChange={this.props.handleInputChange} value={this.props.formValues.lastName || ''} id="lastName" type='text' name="lastName"/>
 
-            <label htmlFor="title">Title</label>
-            <input onChange={this.props.handleInputChange} value={this.props.formValues.title || ''} id="title" type='text' name="title"/>
-
-            {/*<label htmlFor="photo">Photo</label>*/}
-            {/*<input onChange={} value={} id="photo" type='text' name="photo"/>*/}
-
             <label htmlFor="address">Address</label>
             <input onChange={this.props.handleInputChange} value={this.props.formValues.address || ''} id="address" type='text' name="address"/>
 

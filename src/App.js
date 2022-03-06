@@ -12,7 +12,6 @@ class App extends React.Component {
       generalInformation: {
         firstName: '',
         lastName: '',
-        title: '',
         address: '',
         phoneNumber: '',
         email: '',

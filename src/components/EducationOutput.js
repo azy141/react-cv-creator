@@ -13,7 +13,7 @@ class EducationOutput extends React.Component {
           </div>
 
           <div className="cv-education__institution">
-            {this.props.education.institution}
+            {this.props.education.institution} {this.props.education.institution !== undefined && ', ' + this.props.education.city}
             <div className="cv-education__subject">
               {this.props.education.subject}
             </div>
