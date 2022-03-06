@@ -19,9 +19,6 @@ class EmploymentExperience extends React.Component {
             <label htmlFor="city">City</label>
             <input onChange={this.props.handleInputChange} value={this.props.formValues.city || ''} id="city" type='text' name="city"/>
 
-            {/*<label htmlFor="photo">Photo</label>*/}
-            {/*<input onChange={} value={} id="photo" type='text' name="photo"/>*/}
-
             <label htmlFor="employmentFrom">From</label>
             <input onChange={this.props.handleInputChange} value={this.props.formValues.employmentFrom || ''} id="employmentFrom" type='text' name="employmentFrom"/>
 

@@ -21,6 +21,8 @@ label {
 }
 .cv-main-content {
   background: burlywood;
+  padding: 20px;
+  width: 100%;
 }
 .cv-experience__dates {
   width: 50%;
@@ -37,4 +39,32 @@ label {
 }
 .cv-output {
   width: 60%;
+}
+img {
+  height: 140px;
+  width: 140px;
+}
+
+img {
+  height: 140px;
+  width: 140px;
+}
+.cv-image {
+  width: 200px;
+  float: right;
+  margin-top: 20px;
+}
+.cv-header__job-title {
+  margin-bottom:1rem;
+  font-size:1.5rem;
+}
+
+.cv-header {
+  height: 200px;
+  padding: 20px;
+}
+
+.header {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }

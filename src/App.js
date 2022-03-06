@@ -18,21 +18,6 @@ class App extends React.Component {
         email: '',
         description: '',
       },
-      educationalExperience: {
-        institution: '',
-        city: '',
-        qualType: '',
-        subject: '',
-        educationFrom: '',
-        educationTo: '',
-      },
-      employmentExperience: {
-        position: '',
-        company: '',
-        city: '',
-        employmentFrom: '',
-        employmentTo: '',
-      },
       empInfo: [{
         employmentExperience: {
           position: '',
@@ -67,10 +52,30 @@ class App extends React.Component {
     });
   }
 
+  handleImageChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      let img = event.target.files[0];
+      this.setState({
+        image: URL.createObjectURL(img)
+      });
+    }
+  }
+
+  handleMultiInputChange(empInfo,index,objectName, event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState(prevState => {
+      let ourObject = prevState[objectName][index];
+      ourObject[name] = value;
+      return {ourObject};
+    });
+  }
+
   additionalEmploymentInfo(event) {
     this.setState(prevState => {
-      let ourObject = prevState.empInfo;
-      ourObject.push({
+      let empInfo = [...prevState.empInfo, {
         employmentExperience: {
           position: '',
           company: '',
@@ -78,15 +83,15 @@ class App extends React.Component {
           employmentFrom: '',
           employmentTo: '',
         }
-      })
-      return {ourObject};
+      },
+      ];
+      return {empInfo};
     });
   }
 
   additionalEducationInfo(event) {
     this.setState(prevState => {
-      let ourObject = prevState.eduInfo;
-      ourObject.push({
+      let eduInfo = [...prevState.eduInfo, {
         educationalExperience: {
           institution: '',
           city: '',
@@ -95,8 +100,9 @@ class App extends React.Component {
           educationFrom: '',
           educationTo: '',
         }
-      })
-      return {ourObject};
+      },
+      ];
+      return {eduInfo};
     });
   }
 
@@ -106,17 +112,20 @@ class App extends React.Component {
         <div className="App">
           <div className="cv-form-data">
             <h2>General Information</h2>
+            <label htmlFor="photo">Photo</label>
+            <input type="file" multiple accept="image/*" onChange={this.handleImageChange.bind(this)} />
+
             <GeneralInformation handleInputChange={this.handleInputChange.bind(this)} formValues={this.state.generalInformation}/>
 
             <h2>Employment Information</h2>
-            {this.state.empInfo.map(function (empinfo) {
-              return <EmploymentExperience handleInputChange={newthis.handleInputChange.bind(newthis)} formValues={empinfo}/>
+            {this.state.empInfo.map(function (empinfo, index) {
+              return <EmploymentExperience handleInputChange={newthis.handleMultiInputChange.bind(newthis, empinfo, index, 'empInfo')} formValues={empinfo}/>
             })}
             <button onClick={this.additionalEmploymentInfo.bind(this)}>Add more</button>
 
             <h2>Educational Information</h2>
-            {this.state.eduInfo.map(function (eduInfo) {
-              return <EducationalExperience handleInputChange={newthis.handleInputChange.bind(newthis)} formValues={eduInfo}/>
+            {this.state.eduInfo.map(function (eduInfo, index) {
+              return <EducationalExperience handleInputChange={newthis.handleMultiInputChange.bind(newthis, eduInfo, index, 'eduInfo')} formValues={eduInfo}/>
             })}
             <button onClick={this.additionalEducationInfo.bind(this)}>Add more</button>
 
