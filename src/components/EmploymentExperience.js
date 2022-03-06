@@ -24,6 +24,10 @@ class EmploymentExperience extends React.Component {
 
             <label htmlFor="employmentTo">To</label>
             <input onChange={this.props.handleInputChange} value={this.props.formValues.employmentTo || ''} id="employmentTo" type='text' name="employmentTo"/>
+
+            {this.props.index !== 0 &&
+                <button className="delete-button" onClick={this.props.handleDelete}>Delete</button>
+            }
           </form>
         </div>
     )

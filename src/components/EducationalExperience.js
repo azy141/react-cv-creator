@@ -26,6 +26,9 @@ class EducationalExperience extends React.Component {
 
             <label htmlFor="educationTo">To</label>
             <input onChange={this.props.handleInputChange} value={this.props.formValues.educationTo || ''} id="educationTo" type='text' name="educationTo"/>
+            {this.props.index !== 0 &&
+                <button className="delete-button" onClick={this.props.handleDelete}>Delete</button>
+            }
           </form>
         </div>
     )

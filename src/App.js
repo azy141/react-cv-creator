@@ -17,8 +17,7 @@ class App extends React.Component {
         phoneNumber: '',
         email: '',
         description: '',
-      },
-      empInfo: [{
+      }, empInfo: [{
         employmentExperience: {
           position: '',
           company: '',
@@ -26,8 +25,7 @@ class App extends React.Component {
           employmentFrom: '',
           employmentTo: '',
         }
-      }],
-      eduInfo: [{
+      }], eduInfo: [{
         educationalExperience: {
           institution: '',
           city: '',
@@ -61,7 +59,7 @@ class App extends React.Component {
     }
   }
 
-  handleMultiInputChange(empInfo,index,objectName, event) {
+  handleMultiInputChange(object, index, objectName, event) {
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -83,8 +81,7 @@ class App extends React.Component {
           employmentFrom: '',
           employmentTo: '',
         }
-      },
-      ];
+      },];
       return {empInfo};
     });
   }
@@ -100,9 +97,16 @@ class App extends React.Component {
           educationFrom: '',
           educationTo: '',
         }
-      },
-      ];
+      },];
       return {eduInfo};
+    });
+  }
+
+  handleDelete(index, objectName, event) {
+    this.setState(prevState => {
+      let ourObject = prevState[objectName];
+      ourObject.splice(index, 1);
+      return {ourObject};
     });
   }
 
@@ -111,26 +115,45 @@ class App extends React.Component {
     return (
         <div className="App">
           <div className="cv-form-data">
-            <h2>General Information</h2>
-            <label htmlFor="photo">Photo</label>
-            <input type="file" multiple accept="image/*" onChange={this.handleImageChange.bind(this)} />
+            <div className="card">
+              <h2>General Information</h2>
+              <div className="photo-field">
+                <label htmlFor="photo">Photo</label>
+                <input type="file" multiple accept="image/*"
+                       onChange={this.handleImageChange.bind(this)}/>
+              </div>
 
-            <GeneralInformation handleInputChange={this.handleInputChange.bind(this)} formValues={this.state.generalInformation}/>
 
-            <h2>Employment Information</h2>
-            {this.state.empInfo.map(function (empinfo, index) {
-              return <EmploymentExperience handleInputChange={newthis.handleMultiInputChange.bind(newthis, empinfo, index, 'empInfo')} formValues={empinfo}/>
-            })}
-            <button onClick={this.additionalEmploymentInfo.bind(this)}>Add more</button>
+              <GeneralInformation
+                  handleInputChange={this.handleInputChange.bind(this)}
+                  formValues={this.state.generalInformation}/>
+            </div>
 
-            <h2>Educational Information</h2>
-            {this.state.eduInfo.map(function (eduInfo, index) {
-              return <EducationalExperience handleInputChange={newthis.handleMultiInputChange.bind(newthis, eduInfo, index, 'eduInfo')} formValues={eduInfo}/>
-            })}
-            <button onClick={this.additionalEducationInfo.bind(this)}>Add more</button>
+            <div className="card">
+              <h2>Employment Information</h2>
+              {this.state.empInfo.map(function (empinfo, index) {
+                return <EmploymentExperience index={index}
+                    handleInputChange={newthis.handleMultiInputChange.bind(newthis, empinfo, index, 'empInfo')}
+                    formValues={empinfo} handleDelete={newthis.handleDelete.bind(newthis, index, 'empInfo')}/>
+              })}
+              <button onClick={this.additionalEmploymentInfo.bind(this)}>Add
+                more
+              </button>
+            </div>
+            <div className="card">
+              <h2>Educational Information</h2>
+              {this.state.eduInfo.map(function (eduInfo, index) {
+                return <EducationalExperience index={index}
+                    handleInputChange={newthis.handleMultiInputChange.bind(newthis, eduInfo, index, 'eduInfo')}
+                    formValues={eduInfo} handleDelete={newthis.handleDelete.bind(newthis, index, 'eduInfo')}/>
+              })}
+              <button onClick={this.additionalEducationInfo.bind(this)}>Add
+                more
+              </button>
 
+            </div>
           </div>
-          <CvOutput cv={this.state} />
+          <CvOutput cv={this.state}/>
         </div>
     );
   }
