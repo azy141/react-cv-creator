@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-cv-creator/static/css/main.973d0fb0.css",
+    "main.js": "/react-cv-creator/static/js/main.d734613a.js",
+    "static/js/787.15b63752.chunk.js": "/react-cv-creator/static/js/787.15b63752.chunk.js",
+    "index.html": "/react-cv-creator/index.html",
+    "main.973d0fb0.css.map": "/react-cv-creator/static/css/main.973d0fb0.css.map",
+    "main.d734613a.js.map": "/react-cv-creator/static/js/main.d734613a.js.map",
+    "787.15b63752.chunk.js.map": "/react-cv-creator/static/js/787.15b63752.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.973d0fb0.css",
+    "static/js/main.d734613a.js"
+  ]
+}
