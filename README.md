@@ -1,6 +1,8 @@
 # Project: React CV Application
+Live URL: https://azy141.github.io/react-cv-creator/
 
-![](Screenshot 2022-03-06 at 19-47-14 React App.png)
+![](screenshot.png)
+
 
 # What is this about?
 
@@ -13,3 +15,9 @@ The design of the project is to showcase the understanding of concepts below:
 - State management
 - CSS
 - HTML
+
+## Future enhancements
+- PDF generator
+- Save and load files
+- Better styling
+- Store data to local storage
